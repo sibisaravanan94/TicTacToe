@@ -14,7 +14,7 @@ namespace TicTacToe.Stratergies.MakeMoveStratergies
             List<Cell> emptyCells = board.getEmptyCells();
             Random random = new Random();
             int index = random.Next(0, emptyCells.Count);
-            return emptyCells[index];
+            return new Cell ( emptyCells[index].x, emptyCells[index].y);
         }
 
         

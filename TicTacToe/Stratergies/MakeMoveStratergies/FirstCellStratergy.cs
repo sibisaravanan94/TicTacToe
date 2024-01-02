@@ -12,7 +12,7 @@ namespace TicTacToe.Stratergies.MakeMoveStratergies
         public Cell MakeMove(Board board)
         {
             List<Cell> emptyCells = board.getEmptyCells();
-            return emptyCells[0];
+            return new Cell(emptyCells[0].x, emptyCells[0].y);
         }
     }
 }

@@ -5,15 +5,20 @@ using System.Text;
 using System.Threading.Tasks;
 using TicTacToe.Stratergies.MakeMoveStratergies;
 using TicTacToe.Stratergies.WinningStratergies;
+using TicTacToe.Exceptions;
 
 namespace TicTacToe.Models
 {
     public class Game
     {
-        public Board board { get; set; }
-        public List<Player> Players { get; set; } = new List<Player>();
+        public Board board { get; private set; }
+        public List<Player> Players { get; private set; } = new List<Player>();
         public List<IWinningStratergy> WinningStratergies { get; set; } = new List<IWinningStratergy>();
+        public GameStatus gameStatus { get; private set; }
+        public int NextPlayerIndex { get; private set; } = 0;
+        public Player Winner { get; private set; }
 
+        #region Builder
         private Game()
         {
 
@@ -62,14 +67,53 @@ namespace TicTacToe.Models
             }
         }
 
+        #endregion
+
         public void start()
         {
+            // Set Random Player to start
+            Random random = new Random();
+            NextPlayerIndex = random.Next(0, board.size - 1);
 
+            // Set Game Status to in progress
+            gameStatus = GameStatus.In_Progress;
         }
 
-        public Cell makeMove()
+        public void makeMove()
         {
-            return Players[1].play(board);
+            Cell lastMove = Players[NextPlayerIndex].play(board);
+
+            validateMove(lastMove);
+
+            board.updateMove(lastMove, Players[NextPlayerIndex].symbol);
+
+            if(checkWinner(lastMove))
+            {
+                gameStatus = GameStatus.Finished;
+                Winner = Players[NextPlayerIndex];
+                return;
+            }
+
+            if (checkDraw())
+            {
+                gameStatus = GameStatus.Drawn;
+                return;
+            }
+
+            updateNextPlayerIndex();
+        }
+
+        private void updateNextPlayerIndex()
+        {
+            NextPlayerIndex = (NextPlayerIndex + 1) % Players.Count;
+        }
+
+        private void validateMove(Cell lastMove)
+        {
+            if (!board.isEmpty(lastMove))
+            {
+                throw new InvalidMoveException(lastMove.x, lastMove.y);
+            }
         }
 
         public bool checkWinner(Cell lastMove)

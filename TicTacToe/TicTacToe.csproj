@@ -46,6 +46,8 @@
     <Compile Include="Models\Board.cs" />
     <Compile Include="Models\BotPlayer.cs" />
     <Compile Include="Models\Cell.cs" />
+    <Compile Include="Models\GameStatus.cs" />
+    <Compile Include="Exceptions\InvalidMoveException.cs" />
     <Compile Include="Stratergies\MakeMoveStratergies\FirstCellStratergy.cs" />
     <Compile Include="Models\Game.cs" />
     <Compile Include="Models\HumanPlayer.cs" />

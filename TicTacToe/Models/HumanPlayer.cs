@@ -19,7 +19,7 @@ namespace TicTacToe.Models
             Console.WriteLine("Enter row and column");
             int row = Convert.ToInt32(Console.ReadLine());
             int col = Convert.ToInt32(Console.ReadLine());
-            return board.cells[row][col];
+            return new Cell(board.cells[row][col].x, board.cells[row][col].y);
         }
     }
 }

@@ -16,9 +16,17 @@ namespace TicTacToe.Models
 
         private List<List<Cell>> createBoard(int size)
         {
-            List<Cell> row = Enumerable.Repeat(new Cell(), size).ToList();
-            List<List<Cell>> board = Enumerable.Repeat(row, size).ToList();
-
+            List<List<Cell>> board = new List<List<Cell>>();
+            for (int i =0; i<size; i++)
+            {
+                List<Cell> row = new List<Cell>();
+                for (int j = 0; j<size; j++)
+                {
+                    row.Add(new Cell(i, j));
+                }
+                board.Add(row);
+            }
+            
             return board;
         }
 
@@ -29,6 +37,14 @@ namespace TicTacToe.Models
                 
         }
 
-        
+        internal bool isEmpty(Cell lastMove)
+        {
+            return lastMove.symbol == null;
+        }
+
+        internal void updateMove(Cell lastMove, Symbol symbol)
+        {
+            cells[lastMove.x][lastMove.y].symbol = symbol;
+        }
     }
 }

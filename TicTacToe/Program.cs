@@ -31,7 +31,7 @@ namespace TicTacToe
             int rowCount = game.board.cells.Count;
             int colCount = game.board.cells[0].Count;
 
-            Cell cell = game.makeMove();
+            //Cell cell = game.makeMove();
         }
     }
 }
