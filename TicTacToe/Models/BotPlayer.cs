@@ -9,10 +9,20 @@ namespace TicTacToe.Models
 {
     public class BotPlayer : Player
     {
-        internal BotPlayer(Level level, Symbol symbol, IMakeMoveStratergy moveStratergy) : base(symbol)
+        internal BotPlayer(Level level, Symbol symbol) : base(symbol)
         {
             this.level = level;
-            this.moveStratergy = moveStratergy;
+
+            switch (level)
+            {
+                case Level.Easy:
+                case Level.Medium:
+                    this.moveStratergy = new FirstCellStratergy();
+                    break;
+                case Level.Hard:
+                    this.moveStratergy = new RandomMoveStratergy();
+                    break;
+            }
         }
 
         public Level level { get; set; }

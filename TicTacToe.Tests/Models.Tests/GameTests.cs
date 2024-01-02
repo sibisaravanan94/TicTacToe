@@ -25,7 +25,7 @@ namespace TicTacToe.Tests.Models.Tests
                                             .photo(null)
                                             .build()
                                          , Symbol.X)
-                                .withBot(Level.Hard, Symbol.O, new RandomMoveStratergy())
+                                .withBot(Level.Hard, Symbol.O)
                                 .Build();
 
             // Act

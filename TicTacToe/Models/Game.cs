@@ -46,9 +46,9 @@ namespace TicTacToe.Models
                 reference.Players.Add(new HumanPlayer(user, symbol));
                 return this;
             }
-            public GameBuilder withBot(Level level, Symbol symbol, IMakeMoveStratergy moveStratergy)
+            public GameBuilder withBot(Level level, Symbol symbol)
             {
-                reference.Players.Add(new BotPlayer(level, symbol, moveStratergy));
+                reference.Players.Add(new BotPlayer(level, symbol));
                 return this;
             }
             public Game Build()

@@ -46,7 +46,7 @@ namespace TicTacToe
             return Game.GetGameBuilder()
                                 .ofSize(boardSize)
                                 .withUser(user, Symbol.X)
-                                .withBot(Level.Hard, Symbol.O, new RandomMoveStratergy())
+                                .withBot(Level.Hard, Symbol.O)
                                 .Build();
         }
 
