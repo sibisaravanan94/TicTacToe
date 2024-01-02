@@ -46,8 +46,17 @@ namespace TicTacToe
             return Game.GetGameBuilder()
                                 .ofSize(boardSize)
                                 .withUser(user, Symbol.X)
-                                .withBot(Level.Hard, Symbol.O)
+                                .withBot(Level.Hard, decideBotPlayerSymbol(Symbol.X))
                                 .Build();
+        }
+
+        private static Symbol decideBotPlayerSymbol(Symbol x)
+        {
+            if (x == Symbol.X)
+            {
+                return Symbol.O;
+            }
+            return Symbol.X;
         }
 
         private static User getUserInputs()
