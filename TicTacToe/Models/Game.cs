@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TicTacToe.Stratergies.MakeMoveStratergies;
+using TicTacToe.Stratergies.WinningStratergies;
 
 namespace TicTacToe.Models
 {
@@ -11,6 +12,7 @@ namespace TicTacToe.Models
     {
         public Board board { get; set; }
         public List<Player> Players { get; set; } = new List<Player>();
+        public List<IWinningStratergy> WinningStratergies { get; set; } = new List<IWinningStratergy>();
 
         private Game()
         {
@@ -70,9 +72,16 @@ namespace TicTacToe.Models
             return Players[1].play(board);
         }
 
-        public void checkWinner()
+        public bool checkWinner(Cell lastMove)
         {
-
+            foreach(IWinningStratergy stratergy in WinningStratergies)
+            {
+                if(stratergy.checkWinner(board, lastMove))
+                {
+                    return true;
+                }
+            }
+            return false;
         }
 
         public bool checkDraw()
