@@ -77,6 +77,19 @@ namespace TicTacToe.Models
 
             // Set Game Status to in progress
             gameStatus = GameStatus.In_Progress;
+
+            // Get winning stratergies
+            WinningStratergies = getWinningStratergies();
+        }
+
+        private List<IWinningStratergy> getWinningStratergies()
+        {
+            return new List<IWinningStratergy>()
+            {
+                    new RowWinningStratergy()
+                    , new ColumnWinningStratergy()
+                    , new DiagonalWinningStratergy() 
+            };
         }
 
         public void makeMove()

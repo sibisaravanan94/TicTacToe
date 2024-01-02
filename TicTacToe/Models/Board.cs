@@ -30,6 +30,24 @@ namespace TicTacToe.Models
             return board;
         }
 
+        internal void printBoard()
+        {
+            for(int i=0; i<size; i++)
+            {
+                for(int j=0; j<size; j++)
+                {
+                    string val = "-";
+                    if (cells[i][j] != null)
+                    {
+                        val = cells[i][j].symbol.ToString();
+                    }
+
+                    Console.WriteLine(" | {0} | ", val);
+                }
+                Console.WriteLine();
+            }
+        }
+
         public List<Cell> getEmptyCells()
         {
             List<Cell> emptyCells = cells.SelectMany(cells => cells).Select(cell => cell).Where(cell => cell.symbol == null).ToList();
