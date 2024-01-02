@@ -43,6 +43,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\Board.cs" />
+    <Compile Include="Models\BotPlayer.cs" />
+    <Compile Include="Models\Cell.cs" />
+    <Compile Include="Models\FirstCellStratergy.cs" />
+    <Compile Include="Models\Game.cs" />
+    <Compile Include="Models\HumanPlayer.cs" />
+    <Compile Include="Models\IMakeMoveStratergy.cs" />
+    <Compile Include="Models\Level.cs" />
+    <Compile Include="Models\Player.cs" />
+    <Compile Include="Models\RandomMoveStratergy.cs" />
+    <Compile Include="Models\Symbol.cs" />
+    <Compile Include="Models\User.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
