@@ -48,6 +48,8 @@
     <Compile Include="Models\Cell.cs" />
     <Compile Include="Models\GameStatus.cs" />
     <Compile Include="Exceptions\InvalidMoveException.cs" />
+    <Compile Include="Exceptions\InvalidPlayersListException.cs" />
+    <Compile Include="Exceptions\InvalidSymbolException.cs" />
     <Compile Include="Stratergies\MakeMoveStratergies\FirstCellStratergy.cs" />
     <Compile Include="Models\Game.cs" />
     <Compile Include="Models\HumanPlayer.cs" />

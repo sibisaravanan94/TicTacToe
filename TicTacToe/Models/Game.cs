@@ -17,6 +17,7 @@ namespace TicTacToe.Models
         public GameStatus gameStatus { get; private set; }
         public int NextPlayerIndex { get; private set; } = 0;
         public Player Winner { get; private set; }
+        public static readonly int noOfPlayers = 2;
 
         #region Builder
         private Game()
@@ -54,15 +55,29 @@ namespace TicTacToe.Models
             {
                 try
                 {
+                    validate();
                     Game game = new Game();
                     game.board = reference.board;
                     game.Players = reference.Players;
 
                     return game;
+                    
                 }
                 finally
                 {
                     reference = null;
+                }
+            }
+
+            private void validate()
+            {
+                if(reference.Players.Count != noOfPlayers)
+                {
+                    throw new InvalidPlayersListException();
+                }
+                if(reference.Players.Select(player => player.symbol).ToHashSet().Count != noOfPlayers)
+                {
+                    throw new InvalidSymbolException();
                 }
             }
         }
