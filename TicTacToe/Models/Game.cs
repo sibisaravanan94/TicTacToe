@@ -144,7 +144,7 @@ namespace TicTacToe.Models
             }
         }
 
-        public bool checkWinner(Cell lastMove)
+        private bool checkWinner(Cell lastMove)
         {
             foreach(IWinningStratergy stratergy in WinningStratergies)
             {
@@ -156,7 +156,7 @@ namespace TicTacToe.Models
             return false;
         }
 
-        public bool checkDraw()
+        private bool checkDraw()
         {
             List<Cell> emptyCells = board.getEmptyCells();
             return (emptyCells.Count == 0);
