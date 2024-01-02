@@ -11,6 +11,7 @@ namespace TicTacToe.Models
 
         internal Board(int size)
         {
+            this.size = size;
             cells = createBoard(size);
         }
 
@@ -36,16 +37,25 @@ namespace TicTacToe.Models
             {
                 for(int j=0; j<size; j++)
                 {
-                    string val = "-";
                     if (cells[i][j] != null)
                     {
-                        val = cells[i][j].symbol.ToString();
+                        string val = cells[i][j].symbol.ToString();
+                        Console.Write("| "+val+" |");
+                    }
+                    else
+                    {
+                        Console.Write("|  :  |");
                     }
 
-                    Console.WriteLine(" | {0} | ", val);
+                    
                 }
                 Console.WriteLine();
             }
+            Console.WriteLine();
+            Console.WriteLine();
+            Console.WriteLine("-------------------------------------------------------");
+            Console.WriteLine();
+            Console.WriteLine();
         }
 
         public List<Cell> getEmptyCells()
@@ -57,12 +67,13 @@ namespace TicTacToe.Models
 
         internal bool isEmpty(Cell lastMove)
         {
-            return lastMove.symbol == null;
+            return cells[lastMove.x][lastMove.y].symbol == null;
         }
 
         internal void updateMove(Cell lastMove, Symbol symbol)
         {
             cells[lastMove.x][lastMove.y].symbol = symbol;
+            lastMove.symbol = symbol;
         }
     }
 }

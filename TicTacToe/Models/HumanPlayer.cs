@@ -19,7 +19,16 @@ namespace TicTacToe.Models
             Console.WriteLine("Enter row and column");
             int row = Convert.ToInt32(Console.ReadLine());
             int col = Convert.ToInt32(Console.ReadLine());
+            validateUserInput(row, col, board);
             return new Cell(board.cells[row][col].x, board.cells[row][col].y);
+        }
+
+        private void validateUserInput(int row, int col, Board board)
+        {
+            if(row <0 || row>=board.size || col<0 || col >= board.size)
+            {
+                throw new InvalidBoardCellException();
+            }
         }
     }
 }

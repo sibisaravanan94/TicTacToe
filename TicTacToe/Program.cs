@@ -37,7 +37,8 @@ namespace TicTacToe
             {
                 Console.WriteLine("Match draw");
             }
-            
+
+            Console.ReadLine();
         }
 
         private static Game createBoard(User user)

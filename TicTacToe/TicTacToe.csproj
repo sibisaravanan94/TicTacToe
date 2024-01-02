@@ -50,6 +50,7 @@
     <Compile Include="Exceptions\InvalidMoveException.cs" />
     <Compile Include="Exceptions\InvalidPlayersListException.cs" />
     <Compile Include="Exceptions\InvalidSymbolException.cs" />
+    <Compile Include="Models\InvalidBoardCellException.cs" />
     <Compile Include="Stratergies\MakeMoveStratergies\FirstCellStratergy.cs" />
     <Compile Include="Models\Game.cs" />
     <Compile Include="Models\HumanPlayer.cs" />
