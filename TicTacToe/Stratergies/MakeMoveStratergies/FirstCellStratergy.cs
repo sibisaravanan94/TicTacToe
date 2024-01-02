@@ -3,14 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TicTacToe.Models;
 
-namespace TicTacToe.Models
+namespace TicTacToe.Stratergies.MakeMoveStratergies
 {
     public class FirstCellStratergy : IMakeMoveStratergy
     {
         public Cell MakeMove(Board board)
         {
-            throw new NotImplementedException();
+            List<Cell> emptyCells = board.getEmptyCells();
+            return emptyCells[0];
         }
     }
 }

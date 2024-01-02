@@ -22,6 +22,13 @@ namespace TicTacToe.Models
             return board;
         }
 
+        public List<Cell> getEmptyCells()
+        {
+            List<Cell> emptyCells = cells.SelectMany(cells => cells).Select(cell => cell).Where(cell => cell.symbol == null).ToList();
+            return emptyCells;
+                
+        }
+
         
     }
 }

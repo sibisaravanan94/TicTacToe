@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TicTacToe.Stratergies.MakeMoveStratergies;
 
 namespace TicTacToe.Models
 {
@@ -37,9 +38,9 @@ namespace TicTacToe.Models
                 reference.Players.Add(new HumanPlayer(user, symbol));
                 return this;
             }
-            public GameBuilder withBot(Level level, Symbol symbol)
+            public GameBuilder withBot(Level level, Symbol symbol, IMakeMoveStratergy moveStratergy)
             {
-                reference.Players.Add(new BotPlayer(level, symbol));
+                reference.Players.Add(new BotPlayer(level, symbol, moveStratergy));
                 return this;
             }
             public Game Build()
@@ -62,6 +63,22 @@ namespace TicTacToe.Models
         public void start()
         {
 
+        }
+
+        public Cell makeMove()
+        {
+            return Players[1].play(board);
+        }
+
+        public void checkWinner()
+        {
+
+        }
+
+        public bool checkDraw()
+        {
+            List<Cell> emptyCells = board.getEmptyCells();
+            return (emptyCells.Count == 0);
         }
     }
 }

@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TicTacToe.Models;
 using Xunit;
+using TicTacToe.Stratergies.MakeMoveStratergies;
 
 namespace TicTacToe.Tests.Models.Tests
 {
@@ -24,16 +25,19 @@ namespace TicTacToe.Tests.Models.Tests
                                             .photo(null)
                                             .build()
                                          , Symbol.X)
-                                .withBot(Level.Hard, Symbol.O)
+                                .withBot(Level.Hard, Symbol.O, new RandomMoveStratergy())
                                 .Build();
 
             // Act
             int rowCount = game.board.cells.Count;
             int colCount = game.board.cells[0].Count;
 
+            Cell cell = game.makeMove();
+
             // Assert
             Assert.Equal(rowCount, boardSize);
             Assert.Equal(colCount, boardSize);
+            Assert.Null(cell.symbol);
 
         }
     }
