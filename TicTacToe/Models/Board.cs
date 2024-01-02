@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace TicTacToe.Models
 {
@@ -8,19 +9,19 @@ namespace TicTacToe.Models
         public List<List<Cell>> cells { get; private set; }
         public int size { get; private set; }
 
-        public Board(int size)
+        internal Board(int size)
         {
-            createBoard(size);
+            cells = createBoard(size);
         }
 
-        private void createBoard(int size)
+        private List<List<Cell>> createBoard(int size)
         {
-            throw new NotImplementedException();
+            List<Cell> row = Enumerable.Repeat(new Cell(), size).ToList();
+            List<List<Cell>> board = Enumerable.Repeat(row, size).ToList();
+
+            return board;
         }
 
-        public void start()
-        {
-
-        }
+        
     }
 }
